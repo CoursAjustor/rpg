@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-
+import { Request, Response } from 'express';
 export class IndexController {
-  public static index(req: Request, res: Response): Record<string, any> {
-    return res.json({
-      message: "Hello boi",
-    });
+  public static async index(
+    req: Request,
+    res: Response,
+  ): Promise<Record<string, any>> {
+    return res.sendStatus(200);
   }
 }

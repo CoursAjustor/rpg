@@ -1,23 +1,29 @@
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import { Routes } from "./routes/routes";
-import { dbInit } from "./utils/Database";
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
+import * as express from 'express';
+import { config } from './config/Config';
+import { Routes } from './routes/routes';
+import { dbInit } from './utils/Database';
 
 const main = async () => {
-  const PORT = process.env.PORT || 3000;
+  const PORT = config.get('port') || 3000;
 
   const app = express();
-  await dbInit()
+  app.use(
+    cookieParser(
+      'K"Ts2$$b3QeP0E?z{NHm4exo#(l*35GR<S<|@,@>uWG(=RSwI#F5/uv-sUIhWgy',
+    ),
+  );
+  await dbInit();
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  const routes = new Routes()
+  const routes = new Routes();
 
-  app.use(routes.routes())
+  app.use(routes.routes());
 
   app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
-}
+};
 
-
-main()
+main();

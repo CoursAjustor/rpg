@@ -1,10 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 export class CustomRouter {
+  protected router = Router();
 
-  protected router = Router()
-
-  constructor() {
-
-  }
+  constructor() {}
 }

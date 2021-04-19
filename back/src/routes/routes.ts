@@ -1,15 +1,15 @@
-import { Router } from "express";
-import { IndexController } from "../controllers/index.controller";
-import { CustomRouter } from "./CustomRouter";
-import { Generates } from './generates/generates';
+import { Router } from 'express';
+import { IndexController } from '../controllers/index.controller';
+import { CustomRouter } from './CustomRouter';
+import { UsersRoutes } from './users.routes';
 
 export class Routes extends CustomRouter {
   public routes(): Router {
-    const generates = new Generates()
+    this.router.get('/', IndexController.index);
 
-    this.router.get('/', IndexController.index)
-    this.router.use('/generates', generates.routes())
+    const usersRoutes = new UsersRoutes();
+    this.router.use('/users', usersRoutes.routes());
 
-    return this.router
+    return this.router;
   }
 }
