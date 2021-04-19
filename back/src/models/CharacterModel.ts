@@ -3,8 +3,8 @@ import { model, Schema } from 'mongoose';
 const CharacterSchema = new Schema({
   life: { type: Number, default: 200 },
   maxLife: { type: Number, default: 200 },
-  mp: { type: Number, default: 200 },
-  maxMp: { type: Number, default: 200 },
+  mp: { type: Number, default: 100 },
+  maxMp: { type: Number, default: 100 },
 
   // Stats
   str: { type: Number, default: 5 },
