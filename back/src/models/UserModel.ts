@@ -15,7 +15,7 @@ UserSchema.pre('save', function (next) {
 		this.set({ updatedAt: new Date() });
 		next();
 	} catch (error) {
-			return next(error);
+		return next(error);
 	}
 })
 
