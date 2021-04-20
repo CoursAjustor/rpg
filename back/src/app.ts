@@ -1,8 +1,8 @@
 import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
-import * as express from 'express';
+import cookieParser from 'cookie-parser';
+import express from 'express';
 import { config } from './config/Config';
-import { Routes } from './routes/routes';
+import { Routes } from './routes';
 import { dbInit } from './utils/Database';
 
 const main = async () => {

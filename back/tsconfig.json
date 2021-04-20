@@ -16,7 +16,8 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@login": ["src/login/*"]
     }
   },
   "exclude": ["node_modules", "dist"],
