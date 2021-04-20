@@ -21,4 +21,16 @@ export class LoginController {
       return res.status(e.statusCode).json({ ...e });
     }
   }
+
+  public static async logout(
+    req: Request,
+    res: Response,
+  ): Promise<Record<string, any>> {
+    try {
+      res.clearCookie('user');
+      return res.sendStatus(200);
+    } catch (e) {
+      return res.status(e.statusCode).json({ ...e });
+    }
+  }
 }
