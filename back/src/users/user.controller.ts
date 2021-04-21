@@ -14,6 +14,19 @@ export class UserController {
       .status(200);
   }
 
+  public static async deleteUser(req: Request, res: Response) {
+    const {
+      params: { username },
+    } = req;
+    try {
+      await UserService.delete(username);
+      return res.sendStatus(204);
+    } catch (e) {
+      const { code, ...error } = e;
+      return res.status(code).json({ ...error });
+    }
+  }
+
   public static async getByUsername(req: Request, res: Response) {
     const {
       params: { username },
@@ -29,10 +42,10 @@ export class UserController {
     const {
       body: { username, email, password },
     } = req;
-    const users = await UserService.getFiltered({
+    const existingUser = await UserService.exists({
       $or: [{ username }, { email }],
     });
-    if (users.length) {
+    if (existingUser) {
       return res.sendStatus(409);
     }
 

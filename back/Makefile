@@ -2,6 +2,7 @@
 
 init:
 	cp .env.dist .env
+	npm i
 
 start:
 	npm start

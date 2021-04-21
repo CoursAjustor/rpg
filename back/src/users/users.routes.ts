@@ -18,6 +18,7 @@ class UsersRoutes extends CustomRouter {
 
     this.router.use(Credential.checkUserCredentials);
     this.router.get('/:username', UserController.getByUsername);
+    this.router.delete('/:username', UserController.deleteUser);
 
     return this.router;
   }
