@@ -1,12 +1,12 @@
-import { model, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 
 const UserSchema = new Schema({
-  username: { type: String, default: null },
-  email: { type: String, default: null },
-  password: { type: String, default: null },
+  username: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
   token: { type: String, default: null },
   tokenValidity: { type: Date, default: null },
-  character: { type: Schema.Types.ObjectId, ref: 'Character' },
+  character: { type: Schema.Types.ObjectId, ref: 'Character', required: true },
   updatedAt: { type: Date, default: null },
   createdAt: { type: Date, default: Date.now },
 });
@@ -21,5 +21,13 @@ UserSchema.pre('save', function (next) {
     return next(error);
   }
 });
+
+export interface User extends Document {
+  username: string;
+  email: string;
+  token: string;
+  tokenValidity: string;
+  character: Schema.Types.ObjectId | Record<string, unknown>;
+}
 
 export const UserModel = model('User', UserSchema);

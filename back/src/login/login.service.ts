@@ -7,11 +7,9 @@ import { User } from './interfaces/user.interface';
 export class LoginService {
   static async login({
     username,
-    email,
     password,
   }: {
-    username?: string;
-    email?: string;
+    username: string;
     password: string;
   }): Promise<any> {
     const encryptedPassword = createHash('sha512')
@@ -20,7 +18,7 @@ export class LoginService {
 
     const user: User = await UserModel.findOne(
       {
-        $or: [{ username }, { email }],
+        username,
         password: encryptedPassword,
       },
       'username token email character tokenValidity',

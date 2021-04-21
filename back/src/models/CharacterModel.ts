@@ -6,6 +6,9 @@ const CharacterSchema = new Schema({
   mp: { type: Number, default: 100 },
   maxMp: { type: Number, default: 100 },
 
+  class: { type: String, enum: ['freelance'], default: 'freelance' },
+  level: { type: Number, required: true, default: 1 },
+
   // Stats
   str: { type: Number, default: 5 },
   agi: { type: Number, default: 5 },

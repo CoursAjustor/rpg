@@ -18,7 +18,8 @@ export class LoginController {
 
       return res.sendStatus(200);
     } catch (e) {
-      return res.status(e.statusCode).json({ ...e });
+      const { code, ...error } = e;
+      return res.status(code).json({ ...error });
     }
   }
 
@@ -30,7 +31,8 @@ export class LoginController {
       res.clearCookie('user');
       return res.sendStatus(200);
     } catch (e) {
-      return res.status(e.statusCode).json({ ...e });
+      const { code = 403, ...error } = e;
+      return res.status(code).json({ ...error });
     }
   }
 }

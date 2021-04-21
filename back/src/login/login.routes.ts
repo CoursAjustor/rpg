@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { CustomRouter } from '../utils/CustomRouter';
 import { dtoValidationMiddleware } from '../utils/ValidationMiddleware';
+import { LoginDto } from './dto/login.dto';
 import { LoginController } from './login.controller';
-import { LoginDto } from './login.dto';
 
 class LoginRoutes extends CustomRouter {
   public routes(): Router {
