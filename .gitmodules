@@ -1,0 +1,3 @@
+[submodule "rpgBack"]
+	path = rpgBack
+	url = git@github.com:CoursAjustor/rpgBack.git
